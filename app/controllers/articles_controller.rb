@@ -1,6 +1,4 @@
-module Api
-  module V1
-    class ArticlesController < ApplicationController
+class ArticlesController < ApplicationController
 
       def index
         articles = Article.order('created_at DESC');
@@ -41,7 +39,4 @@ module Api
         params.permit(:title, :subtitle, :body)
       end
 
-    end
-
-  end
 end

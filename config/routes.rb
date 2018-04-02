@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  namespace 'api' do
-    namespace 'v1' do
-      resources :articles, path: 'news'
-    end
-  end
 
+  resources :articles, path: 'news' do
+      resources :comments
+    end
 end
