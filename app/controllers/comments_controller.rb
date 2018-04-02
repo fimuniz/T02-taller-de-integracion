@@ -14,9 +14,9 @@ class CommentsController < ApplicationController
       def create
         comment = Comment.new(comment_params)
         if comment.save
-        render json: {status: 'OK', message: 'bla', data:comment}, status: :ok
+        render json: comment, status: :created
         else
-        render json: {status: 'NOT OK', message: 'bla', data:comment.errors}, status: :ok
+        render json: comment.errors, status: :created
         end
       end
 
