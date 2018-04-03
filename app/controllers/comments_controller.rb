@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
       def index
         comments = Article.find(params[:article_id]).comments;
         # comments = Comment.all.select {|comment| comment.article_id == article.id}
-        render json: {status: 'OK', message: 'bla', data:comments }, status: :ok
+        render json: comments, status: :created
       end
 
       def show
         comment = Comment.find(params[:id]);
-        render json: {status: 'OK', message: 'bla', data:comment }, status: :ok
+        render json: comment, status: :created
       end
 
       def create
@@ -23,15 +23,15 @@ class CommentsController < ApplicationController
       def destroy
         comment = Comment.find(params[:id])
         comment.destroy
-        render json: {status: 'OK', message: 'bla', data:comment}, status: :ok
+        render json: comment, status: :created
       end
 
       def update
         comment = Comment.find(params[:id])
         if comment.update(comment_params)
-        render json: {status: 'OK', message: 'bla', data:comment}, status: :ok
+        render json: comment, status: :created
         else
-        render json: {status: 'NOT OK', message: 'bla', data:comment.errors}, status: :ok
+        render json: comment.errors, status: :created
         end
       end
 
