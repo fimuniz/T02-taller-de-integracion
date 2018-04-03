@@ -3,12 +3,12 @@ class CommentsController < ApplicationController
       def index
         comments = Article.find(params[:article_id]).comments;
         # comments = Comment.all.select {|comment| comment.article_id == article.id}
-        render json: comments, status: :created
+        render json: comments, status: :ok
       end
 
       def show
         comment = Comment.find(params[:id]);
-        render json: comment, status: :created
+        render json: comment, status: :ok
       end
 
       def create
