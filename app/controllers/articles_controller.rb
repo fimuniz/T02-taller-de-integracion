@@ -5,12 +5,12 @@ class ArticlesController < ApplicationController
       articles.each do |article|
           article.body.truncate(1)
       end
-      render json: articles, status: :ok
+      render json: articles.as_json(except: [:updated_at]), status: :ok
     end
 
     def show
       article = Article.find(params[:id])
-      render json: article, status: :ok
+      render json: article.as_json(except: [:updated_at]), status: :ok
     end
 
     def create
